@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="THÊM NGƯỜI DÙNG"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edTendangNhap_themNguoidung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên Đăng Nhập" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edMatKhau_themNguoidung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mật Khẩu" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edMatKhau2_themNguoidung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhắc Lại Mật Khẩu" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edSDT_themNguoidung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số Điện Thoại" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edHoTen_themNguoidung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ Tên" />
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_marginBottom="3dp"
+            android:id="@+id/btnThem_ThemNguoiDung"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_button"
+            android:text="Thêm"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+        <Button
+            android:layout_marginBottom="3dp"
+            android:id="@+id/btnHuy_ThemNguoiDung"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/login_button"
+            android:text="Hủy"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</LinearLayout>

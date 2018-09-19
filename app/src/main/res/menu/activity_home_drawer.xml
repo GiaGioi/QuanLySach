@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_menu"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="MENU" />
+        <item
+            android:id="@+id/nav_gioithieu"
+            android:icon="@drawable/ic_menu_share"
+            android:title="GIỚI THIỆU" />
+    </group>
+
+    <item android:title="KHÁC">
+        <menu>
+            <item
+                android:id="@+id/nav_dangxuat"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="ĐĂNG XUẤT" />
+            <item
+                android:id="@+id/nav_back"
+                android:icon="@drawable/ic_menu_send"
+                android:title="THOÁT" />
+        </menu>
+    </item>
+
+</menu>

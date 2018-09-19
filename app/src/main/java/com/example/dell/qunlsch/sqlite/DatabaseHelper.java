@@ -68,12 +68,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Truyen vao Ten bang, array bao gom ten cot, ten cot khoa chinh, gia tri khoa chinh, cac tham so con lai la null
 
-        Cursor cursor = db.query(USER_TABLE, new String[]{COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_NAME, COLUMN_PHONE_NUMBER}, COLUMN_USERNAME + "=?", new String[]{COLUMN_USERNAME}, null, null, null, null);
+        Cursor cursor = db.query(USER_TABLE, new String[]{COLUMN_USERNAME, COLUMN_PASSWORD, COLUMN_NAME, COLUMN_PHONE_NUMBER}, COLUMN_USERNAME + "=?", new String[]{username}, null, null, null, null);
 
         // moveToFirst : kiem tra xem cursor co chua du lieu khong, ham nay tra ve gia tri la true or false
         if (cursor != null && cursor.moveToFirst()) {
 
-            
             String user_name = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
 
             String password = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
@@ -83,7 +82,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String phoneNumber = cursor.getString(cursor.getColumnIndex(COLUMN_PHONE_NUMBER));
 
             // khoi tao user voi cac gia tri lay duoc
-            user = new User(user_name,password,name,phoneNumber);
+            user = new User(user_name, password, name, phoneNumber);
+
+
         }
         cursor.close();
 

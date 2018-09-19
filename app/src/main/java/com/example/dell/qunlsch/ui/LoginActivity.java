@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.dell.qunlsch.R;
 import com.example.dell.qunlsch.model.User;
@@ -32,8 +33,19 @@ public class LoginActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
 
-//        User user = new User("admin", "admin", "Huy Nguyen", "0913456789");
-//        databaseHelper.insertUser(user);
+        // kiem tra user da ton tai trong DB chua !!!
+        User user2;
+
+        user2 = databaseHelper.getUser("admin");
+
+        if (user2 == null) {
+            Toast.makeText(this, "User chua ton tai!!!", Toast.LENGTH_LONG).show();
+            User user = new User("admin", "admin", "Huy Nguyen", "0913456789");
+            databaseHelper.insertUser(user);
+
+        } else {
+            Toast.makeText(this, "User da ton tai !!!", Toast.LENGTH_LONG).show();
+        }
 
 
         initViews();

@@ -10,6 +10,9 @@ import android.util.Log;
 import com.example.dell.qunlsch.Constant;
 import com.example.dell.qunlsch.model.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
@@ -37,6 +40,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // create User Table
         sqLiteDatabase.execSQL(CREATE_USER_TABLE);
         if (Constant.isDEBUG) Log.e("CREATE_USER_TABLE", CREATE_USER_TABLE);
+
+
+        String name = getName();
+    }
+
+
+    public String getName() {
+
+
+        return "Hello";
+    }
+
+
+    public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
+
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + USER_TABLE;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                String user_name = cursor.getString(cursor.getColumnIndex(COLUMN_USERNAME));
+
+                String password = cursor.getString(cursor.getColumnIndex(COLUMN_PASSWORD));
+
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_NAME));
+
+                String phoneNumber = cursor.getString(cursor.getColumnIndex(COLUMN_PHONE_NUMBER));
+
+                // khoi tao user voi cac gia tri lay duoc
+                User user = new User(user_name, password, name, phoneNumber);
+                users.add(user);
+
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+
+        return users;
 
 
     }

@@ -32,63 +32,51 @@ public class LoginActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
-
-        // kiem tra user da ton tai trong DB chua !!!
-        User user2;
-
-        user2 = databaseHelper.getUser("admin");
-
-        if (user2 == null) {
-            Toast.makeText(this, "User chua ton tai!!!", Toast.LENGTH_LONG).show();
-            User user = new User("admin", "admin", "Huy Nguyen", "0913456789");
-            databaseHelper.insertUser(user);
-
-        } else {
-            Toast.makeText(this, "User da ton tai !!!", Toast.LENGTH_LONG).show();
-        }
-
-
         initViews();
+
+        User user = new User("HuyNguyen", "123456", "Huy Nguyen", "123456789");
+        databaseHelper.insertUser(user);
 
         loginDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user = edUserName.getText().toString().trim();
-                String pass = edPassWord.getText().toString().trim();
-                if (pass.length() < 6 || user.isEmpty() || pass.isEmpty()) {
+                String userName = edUserName.getText().toString().trim();
+                String password = edPassWord.getText().toString().trim();
+                if (password.length() < 6 || userName.isEmpty() || password.isEmpty()) {
 
-                    if (user.isEmpty()) edUserName.setError(getString(R.string.notify_empty_user));
+                    if (userName.isEmpty())
+                        edUserName.setError(getString(R.string.notify_empty_user));
 
-                    if (pass.length() < 6)
+                    if (password.length() < 6)
                         edPassWord.setError(getString(R.string.notify_length_pass));
 
-                    if (pass.isEmpty()) edPassWord.setError(getString(R.string.notify_empty_pass));
+                    if (password.isEmpty())
+                        edPassWord.setError(getString(R.string.notify_empty_pass));
 
 
                 } else {
 
+                    User user = databaseHelper.getUser(userName);
 
-                    final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-                    final int[] a = {0};
+                    if (user == null) {
+                        Toast.makeText(
+                                LoginActivity.this,
+                                getString(R.string.notify_wrong_username_password), Toast.LENGTH_SHORT).show();
 
-                    progressDialog.setTitle("Đang đăng nhập");
-                    progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    } else {
 
+                        String passwordOnDB = user.getPassword();
 
-                    CountDownTimer countDownTimer = new CountDownTimer(1500, 40) {
-                        @Override
-                        public void onTick(long millisUntilFinished) {
-                            a[0] = a[0] + 4;
-                            progressDialog.show();
-                            progressDialog.setProgress(a[0]);
-                        }
-
-                        @Override
-                        public void onFinish() {
-                            progressDialog.dismiss();
+                        if (passwordOnDB.equals(password)) {
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                        }
-                    }.start();
+                            finish();
+                        } else Toast.makeText(
+                                LoginActivity.this,
+                                getString(R.string.notify_wrong_username_password), Toast.LENGTH_SHORT).show();
+
+                    }
+
+
                 }
             }
         });

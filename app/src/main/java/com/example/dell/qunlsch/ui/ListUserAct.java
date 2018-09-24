@@ -16,30 +16,36 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.dell.qunlsch.adapter.NguoiDungAdapter;
+import com.example.dell.qunlsch.adapter.UserAdapter;
 import com.example.dell.qunlsch.listener.OnDelete;
 import com.example.dell.qunlsch.listener.OnEdit;
 import com.example.dell.qunlsch.model.User;
 import com.example.dell.qunlsch.R;
+import com.example.dell.qunlsch.sqlite.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NguoidungActivity extends AppCompatActivity implements OnEdit, OnDelete {
+public class ListUserAct extends AppCompatActivity implements OnEdit, OnDelete {
     Toolbar toolbarNguoiDung;
     RecyclerView rvNguoiDung;
     private List<User> userList;
-    private NguoiDungAdapter adapter;
+    private UserAdapter adapter;
+
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nguoidung);
+
+        databaseHelper = new DatabaseHelper(this);
+
         toolbarNguoiDung = findViewById(R.id.toolbarNguoiDung);
         setSupportActionBar(toolbarNguoiDung);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbarNguoiDung.setTitleTextColor(Color.WHITE);
-        toolbarNguoiDung.setTitle("Người Dùng");
+        toolbarNguoiDung.setTitle(getString(R.string.title_list_user_act));
         toolbarNguoiDung.setNavigationIcon(R.drawable.undo);
 
         toolbarNguoiDung.setNavigationOnClickListener(new View.OnClickListener() {
@@ -50,12 +56,10 @@ public class NguoidungActivity extends AppCompatActivity implements OnEdit, OnDe
         });
 
         rvNguoiDung = findViewById(R.id.RecyclerView_NguoiDung);
-        userList = new ArrayList<>();
-        for (int i = 0; i < 40; i++) {
-            //userList.add(new User("Nguyễn Văn Hùng" , "SĐT: 0123456789"));
+        userList = databaseHelper.getAllUsers();
 
-        }
-        adapter = new NguoiDungAdapter(userList, this, this);
+
+        adapter = new UserAdapter(userList, this, this);
         rvNguoiDung.setAdapter(adapter);
 
 

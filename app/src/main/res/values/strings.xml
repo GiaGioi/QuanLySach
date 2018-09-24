@@ -11,4 +11,6 @@
     <string name="notify_empty_pass">Yêu cầu nhập liệu</string>
     <string name="notify_length_user">Yêu cầu phải từ 6 kí tự trở lên</string>
     <string name="notify_length_pass">Phải nhập trên 6 kí tự</string>
+    <string name="notify_wrong_username_password">Wrong Username or Password!</string>
+    <string name="title_list_user_act">Người Dùng</string>
 </resources>

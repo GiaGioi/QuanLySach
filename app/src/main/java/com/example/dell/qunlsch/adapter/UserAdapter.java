@@ -15,12 +15,12 @@ import com.example.dell.qunlsch.R;
 
 import java.util.List;
 
-public class NguoiDungAdapter extends RecyclerView.Adapter<NguoiDungAdapter.ViewHolder>{
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private List<User> userList;
     private OnDelete onDelete;
     private OnEdit onEdit;
 
-    public NguoiDungAdapter(List<User> userList, OnDelete onDelete, OnEdit onEdit) {
+    public UserAdapter(List<User> userList, OnDelete onDelete, OnEdit onEdit) {
         this.userList = userList;
         this.onDelete = onDelete;
         this.onEdit = onEdit;
@@ -30,7 +30,7 @@ public class NguoiDungAdapter extends RecyclerView.Adapter<NguoiDungAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_nguoidung,parent,false);
+        View itemView = inflater.inflate(R.layout.item_nguoidung, parent, false);
         return new ViewHolder(itemView);
     }
 
@@ -55,11 +55,14 @@ public class NguoiDungAdapter extends RecyclerView.Adapter<NguoiDungAdapter.View
 
     @Override
     public int getItemCount() {
+
+        if (userList == null) return 0;
+
         return userList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imgAvatar,imgEdit,imgDelete;
+        public ImageView imgAvatar, imgEdit, imgDelete;
         public TextView tvName;
         public TextView tvSDT;
 

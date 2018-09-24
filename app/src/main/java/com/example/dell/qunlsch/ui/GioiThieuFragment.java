@@ -17,4 +17,5 @@ public class GioiThieuFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gioithieu,container,false);
         return view;
     }
+
 }

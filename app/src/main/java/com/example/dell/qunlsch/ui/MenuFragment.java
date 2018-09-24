@@ -33,7 +33,7 @@ public class MenuFragment extends Fragment {
         imgNguoidung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),NguoidungActivity.class));
+                startActivity(new Intent(getActivity(),ListUserAct.class));
             }
         });
         imgTheloai.setOnClickListener(new View.OnClickListener() {

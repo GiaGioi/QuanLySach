@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.dell.qunlsch.R;
 import com.example.dell.qunlsch.model.User;
 import com.example.dell.qunlsch.sqlite.DatabaseHelper;
+import com.example.dell.qunlsch.sqlitedao.UserDAO;
 
 public class LoginActivity extends AppCompatActivity {
     private ImageView imgLogo;
@@ -33,9 +34,6 @@ public class LoginActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
         initViews();
-
-        User user = new User("HuyNguyen", "123456", "Huy Nguyen", "123456789");
-        databaseHelper.insertUser(user);
 
         loginDangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +54,9 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else {
 
-                    User user = databaseHelper.getUser(userName);
+
+                    UserDAO userDAO = new UserDAO(databaseHelper);
+                    User user = userDAO.getUser(userName);
 
                     if (user == null) {
                         Toast.makeText(

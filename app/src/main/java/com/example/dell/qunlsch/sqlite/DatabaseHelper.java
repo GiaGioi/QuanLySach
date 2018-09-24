@@ -90,6 +90,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public long deleteUser(String username) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(USER_TABLE, COLUMN_USERNAME + " = ?",
+                new String[]{String.valueOf(username)});
+        db.close();
+        return result;
+    }
+
     public void insertUser(User user) {
 
         SQLiteDatabase db = this.getWritableDatabase();

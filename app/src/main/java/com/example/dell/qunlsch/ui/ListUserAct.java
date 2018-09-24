@@ -58,10 +58,8 @@ public class ListUserAct extends AppCompatActivity implements OnEdit, OnDelete {
         rvNguoiDung = findViewById(R.id.RecyclerView_NguoiDung);
         userList = databaseHelper.getAllUsers();
 
-
         adapter = new UserAdapter(userList, this, this);
         rvNguoiDung.setAdapter(adapter);
-
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         rvNguoiDung.setLayoutManager(manager);

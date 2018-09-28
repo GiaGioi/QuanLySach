@@ -10,19 +10,19 @@ import android.widget.TextView;
 
 import com.example.dell.qunlsch.listener.OnDelete;
 import com.example.dell.qunlsch.listener.OnEdit;
-import com.example.dell.qunlsch.model.TheLoai;
+import com.example.dell.qunlsch.model.TypeBook;
 import com.example.dell.qunlsch.R;
 
 import java.util.List;
 
-public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHolder>{
-    private List<TheLoai> theLoaiList;
+public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHolder> {
+    private List<TypeBook> typeBookList;
     private OnDelete onDelete;
     private OnEdit onEdit;
 
 
-    public TheLoaiAdapter(List<TheLoai> theLoaiList, OnDelete onDelete, OnEdit onEdit) {
-        this.theLoaiList = theLoaiList;
+    public TheLoaiAdapter(List<TypeBook> typeBookList, OnDelete onDelete, OnEdit onEdit) {
+        this.typeBookList = typeBookList;
         this.onDelete = onDelete;
         this.onEdit = onEdit;
     }
@@ -31,15 +31,17 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View itemView = inflater.inflate(R.layout.item_theloai,parent,false);
+        View itemView = inflater.inflate(R.layout.item_theloai, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        TheLoai st = theLoaiList.get(position);
-        holder.tvName.setText(st.getName());
-        holder.tvMa.setText(st.getMa());
+
+        TypeBook typeBook = typeBookList.get(position);
+        holder.tvMa.setText(typeBook.id);
+        holder.tvName.setText(typeBook.name);
+
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,11 +58,11 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return theLoaiList.size();
+        return typeBookList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imgAvatar,imgEdit,imgDelete;
+        public ImageView imgAvatar, imgEdit, imgDelete;
         public TextView tvName;
         public TextView tvMa;
 

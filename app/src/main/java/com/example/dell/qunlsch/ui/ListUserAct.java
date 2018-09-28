@@ -22,6 +22,7 @@ import com.example.dell.qunlsch.listener.OnEdit;
 import com.example.dell.qunlsch.model.User;
 import com.example.dell.qunlsch.R;
 import com.example.dell.qunlsch.sqlite.DatabaseHelper;
+import com.example.dell.qunlsch.sqlitedao.UserDAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +35,15 @@ public class ListUserAct extends AppCompatActivity implements OnEdit, OnDelete {
 
     private DatabaseHelper databaseHelper;
 
+    private UserDAO userDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nguoidung);
 
         databaseHelper = new DatabaseHelper(this);
+        userDAO = new UserDAO(databaseHelper);
 
         toolbarNguoiDung = findViewById(R.id.toolbarNguoiDung);
         setSupportActionBar(toolbarNguoiDung);
@@ -56,7 +60,8 @@ public class ListUserAct extends AppCompatActivity implements OnEdit, OnDelete {
         });
 
         rvNguoiDung = findViewById(R.id.RecyclerView_NguoiDung);
-        userList = databaseHelper.getAllUsers();
+
+        userList = userDAO.getAllUsers();
 
         adapter = new UserAdapter(userList, this, this);
         rvNguoiDung.setAdapter(adapter);

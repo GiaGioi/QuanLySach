@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.example.dell.qunlsch.Constant;
 import com.example.dell.qunlsch.model.User;
+import com.example.dell.qunlsch.ui.TheLoaiActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,20 +27,13 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constant {
 
         // create User Table
         sqLiteDatabase.execSQL(CREATE_USER_TABLE);
-        sqLiteDatabase.execSQL(CREATE_BOOK_TABLE);
         sqLiteDatabase.execSQL(CREATE_TYPE_TABLE);
 
-
         if (Constant.isDEBUG) Log.e("CREATE_USER_TABLE", CREATE_USER_TABLE);
+        if (Constant.isDEBUG) Log.e("CREATE_TYPE_TABLE", CREATE_TYPE_TABLE);
 
     }
 
-
-    public String getName() {
-
-
-        return "Hello";
-    }
 
 
 

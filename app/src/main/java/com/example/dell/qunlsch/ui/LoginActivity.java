@@ -1,8 +1,6 @@
 package com.example.dell.qunlsch.ui;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +30,15 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         databaseHelper = new DatabaseHelper(this);
+
+        UserDAO userDAO = new UserDAO(databaseHelper);
+
+        User user = new User();
+        user.setUsername("admin");
+        user.setName("Huy Nguyen");
+        user.setPassword("admin123");
+        user.setSdt("0919030190");
+        userDAO.insertUser(user);
 
         initViews();
 

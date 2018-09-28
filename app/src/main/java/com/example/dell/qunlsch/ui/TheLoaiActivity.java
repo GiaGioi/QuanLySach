@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,23 +21,37 @@ import android.widget.Button;
 import com.example.dell.qunlsch.adapter.TheLoaiAdapter;
 import com.example.dell.qunlsch.listener.OnDelete;
 import com.example.dell.qunlsch.listener.OnEdit;
-import com.example.dell.qunlsch.model.TheLoai;
+import com.example.dell.qunlsch.model.TypeBook;
 import com.example.dell.qunlsch.R;
+import com.example.dell.qunlsch.sqlite.DatabaseHelper;
+import com.example.dell.qunlsch.sqlitedao.TypeBookDAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class TheLoaiActivity extends AppCompatActivity implements OnDelete,OnEdit {
+public class TheLoaiActivity extends AppCompatActivity implements OnDelete, OnEdit {
 
     Toolbar toolbarTheLoai;
     FloatingActionButton floatingActionButton;
     RecyclerView rvTheLoai;
-    private List<TheLoai> TheLoaiList;
+    private List<TypeBook> typeBookList;
     private TheLoaiAdapter adapter;
+
+    private DatabaseHelper databaseHelper;
+
+    private TypeBookDAO typeBookDAO;
+    public static String Hello = "Hello";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_the_loai);
+
+        databaseHelper = new DatabaseHelper(this);
+        typeBookDAO = new TypeBookDAO(databaseHelper);
+
 
         toolbarTheLoai = findViewById(R.id.toolbarTheLoai);
         setSupportActionBar(toolbarTheLoai);
@@ -59,34 +74,54 @@ public class TheLoaiActivity extends AppCompatActivity implements OnDelete,OnEdi
             }
         });
 
-        rvTheLoai = findViewById(R.id.RecyclerView_TheLoai);
-        TheLoaiList = new ArrayList<>();
-        for (int i = 0; i < 40; i++) {
-            TheLoaiList.add(new TheLoai("Công nghệ thông tin" , "Mã thể loại: CNTT"));
 
+        // create sample data
+        typeBookList = new ArrayList<>();
+
+        for (int i = 0; i < 20; i++) {
+            TypeBook typeBook = new TypeBook();
+            typeBook.id = i + new Random().nextInt() + " ";
+            typeBook.name = "Phap Luat " + i;
+            typeBook.description = " Hello Moto " + i;
+            typeBook.position = i + "";
+            typeBookList.add(typeBook);
         }
-        adapter = new TheLoaiAdapter(TheLoaiList,this,this);
-        rvTheLoai.setAdapter(adapter);
 
+        Log.e("SIZE", typeBookList.size() + "");
+
+        rvTheLoai = findViewById(R.id.RecyclerView_TheLoai);
+
+        //typeBookList = typeBookDAO.getAllTypeBooks();
+
+
+        Log.e("SIZE", typeBookList.size() + "");
+
+        adapter = new TheLoaiAdapter(typeBookList, this, this);
+        rvTheLoai.setAdapter(adapter);
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(this);
         rvTheLoai.setLayoutManager(manager);
+
+
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.timkiem_menu,menu);
+        getMenuInflater().inflate(R.menu.timkiem_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.search_item:
                 showDialogSearchTheLoai();
                 break;
         }
         return false;
     }
-    public void showDialogThemTheLoai(){
+
+    public void showDialogThemTheLoai() {
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View dialogView = inflater.inflate(R.layout.dialog_themtheloai, null);
@@ -102,7 +137,8 @@ public class TheLoaiActivity extends AppCompatActivity implements OnDelete,OnEdi
         });
 
     }
-    public void showDialogSearchTheLoai(){
+
+    public void showDialogSearchTheLoai() {
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View dialogView = inflater.inflate(R.layout.dialog_searchtheloai, null);

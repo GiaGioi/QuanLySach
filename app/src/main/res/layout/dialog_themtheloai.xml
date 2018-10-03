@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="THÊM THỂ LOẠI"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edMaTheLoai_ThemTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mã Thể Loại"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edTenTheLoai_ThemTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên Thể Loại"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edVitri_ThemTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Vị trí"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edMota_ThemTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mô tả"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_marginBottom="3dp"
+            android:id="@+id/btnThem_ThemTheLoai"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/login_button"
+            android:text="Thêm"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+        <Button
+            android:layout_marginBottom="3dp"
+            android:id="@+id/btnHuy_ThemTheLoai"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/login_button"
+            android:layout_marginLeft="10dp"
+            android:text="Hủy"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp" />
+    </LinearLayout>
+</LinearLayout>

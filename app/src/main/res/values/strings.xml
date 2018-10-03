@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Quản lý sách</string>
+    <string name="title_activity_home">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="notify_empty_user">Yêu cầu nhập liệu</string>
+    <string name="notify_empty_pass">Yêu cầu nhập liệu</string>
+    <string name="notify_length_user">Yêu cầu phải từ 6 kí tự trở lên</string>
+    <string name="notify_length_pass">Phải nhập trên 6 kí tự</string>
+    <string name="notify_wrong_username_password">Wrong Username or Password!</string>
+    <string name="title_list_user_act">Người Dùng</string>
+    <string name="notify_max_bill_id">Bill ID\'s length is the maximum 7 characters!!!</string>
+</resources>

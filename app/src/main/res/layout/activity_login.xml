@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".ui.LoginActivity">
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="220dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/poly" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/imgLogo"
+        android:orientation="vertical"
+       android:paddingLeft="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp">
+
+
+        <LinearLayout
+            android:paddingTop="25dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/login_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp"
+            android:paddingEnd="20dp"
+            android:paddingLeft="20dp">
+            <android.support.design.widget.TextInputLayout
+                android:paddingLeft="5dp"
+                android:paddingEnd="5dp"
+                android:background="@drawable/login_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:drawablePadding="20dp"
+                    android:drawableLeft="@drawable/username"
+                    android:textSize="15dp"
+                    android:imeOptions="actionNext"
+                    android:hint="User Name"
+                    android:id="@+id/edUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:paddingLeft="5dp"
+                android:paddingEnd="5dp"
+                android:background="@drawable/login_edittext"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:drawablePadding="20dp"
+                    android:drawableLeft="@drawable/pass"
+                    android:textSize="15dp"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:hint="Pass Word"
+                    android:id="@+id/edPassWord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </android.support.design.widget.TextInputLayout>
+
+            <CheckBox
+                android:layout_marginTop="10dp"
+                android:id="@+id/chkRememberPass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu mật khẩu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_marginBottom="3dp"
+                    android:id="@+id/login_dangnhap"
+                    android:textColor="@color/white"
+                    android:background="@drawable/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="15dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="5dp"
+                    android:text="Đăng nhập"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

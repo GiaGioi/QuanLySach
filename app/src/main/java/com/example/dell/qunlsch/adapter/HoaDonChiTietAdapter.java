@@ -33,11 +33,11 @@ public class HoaDonChiTietAdapter extends RecyclerView.Adapter<HoaDonChiTietAdap
 
     @Override
     public void onBindViewHolder(@NonNull HoaDonChiTietAdapter.ViewHolder holder, int position) {
-        BillDetail st = hoaDonList.get(position);
+        final BillDetail st = hoaDonList.get(position);
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDelete.OnDelete();
+                onDelete.OnDelete(st);
             }
         });
     }

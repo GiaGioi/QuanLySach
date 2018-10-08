@@ -36,7 +36,7 @@ import com.example.dell.qunlsch.sqlitedao.TypeBookDAO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SachActivity extends AppCompatActivity implements OnEdit, OnDelete {
+public class SachActivity extends AppCompatActivity implements OnEdit<Book>, OnDelete<Book> {
     Toolbar toolbarSach;
     FloatingActionButton floatingActionButton;
     RecyclerView rvSach;
@@ -78,6 +78,8 @@ public class SachActivity extends AppCompatActivity implements OnEdit, OnDelete 
 
         rvSach = findViewById(R.id.RecyclerView_Sach);
         bookList = new ArrayList<>();
+
+        bookList = bookDAO.getAllBooks();
 
         adapter = new SachAdapter(bookList, this, this);
         rvSach.setAdapter(adapter);
@@ -193,13 +195,15 @@ public class SachActivity extends AppCompatActivity implements OnEdit, OnDelete 
     }
 
     @Override
-    public void OnDelete() {
+    public void OnDelete(Book book) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage("Bạn có muốn xóa sách này không?");
         builder.setNegativeButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+
             }
         });
         builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
@@ -212,7 +216,7 @@ public class SachActivity extends AppCompatActivity implements OnEdit, OnDelete 
     }
 
     @Override
-    public void OnEdit() {
+    public void OnEdit(Book book) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View dialogView = inflater.inflate(R.layout.dialog_editsach, null);

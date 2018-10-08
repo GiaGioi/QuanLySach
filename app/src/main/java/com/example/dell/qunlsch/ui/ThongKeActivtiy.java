@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.dell.qunlsch.R;
+import com.example.dell.qunlsch.sqlite.DatabaseHelper;
+import com.example.dell.qunlsch.sqlitedao.StatisticsDAO;
 
 public class ThongKeActivtiy extends AppCompatActivity {
     Toolbar toolbarThongKe;
@@ -15,19 +17,23 @@ public class ThongKeActivtiy extends AppCompatActivity {
     private TextView tvDoanhThuThang;
     private TextView tvDoanhThuNam;
 
+
+    private DatabaseHelper databaseHelper;
+    private StatisticsDAO statisticsDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_ke_activtiy);
         initView();
-        getStatisticByDay();
+        databaseHelper = new DatabaseHelper(this);
+        statisticsDAO = new StatisticsDAO(databaseHelper);
+
+        statisticsDAO.getStatisticsByMonth(9);
+
 
     }
 
-
-    public void getStatisticByDay(){
-
-    }
 
     private void initView() {
         toolbarThongKe = findViewById(R.id.toolbarThongKe);

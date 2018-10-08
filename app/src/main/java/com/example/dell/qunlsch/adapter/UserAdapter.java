@@ -36,19 +36,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User st = userList.get(position);
+        final User st = userList.get(position);
         holder.tvName.setText(st.getName());
         holder.tvSDT.setText(st.getSdt());
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDelete.OnDelete();
+                onDelete.OnDelete(st);
             }
         });
         holder.imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onEdit.OnEdit();
+                onEdit.OnEdit(st);
             }
         });
     }

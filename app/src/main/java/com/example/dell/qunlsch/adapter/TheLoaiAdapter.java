@@ -38,20 +38,20 @@ public class TheLoaiAdapter extends RecyclerView.Adapter<TheLoaiAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        TypeBook typeBook = typeBookList.get(position);
+        final TypeBook typeBook = typeBookList.get(position);
         holder.tvMa.setText(typeBook.id);
         holder.tvName.setText(typeBook.name);
 
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDelete.OnDelete();
+                onDelete.OnDelete(typeBook);
             }
         });
         holder.imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onEdit.OnEdit();
+                onEdit.OnEdit(typeBook);
             }
         });
     }

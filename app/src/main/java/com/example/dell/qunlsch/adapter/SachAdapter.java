@@ -36,7 +36,7 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Book book = bookList.get(position);
+        final Book book = bookList.get(position);
 
         holder.tvMa.setText(book.id);
         holder.tvName.setText(book.typeID);
@@ -45,13 +45,13 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder> {
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDelete.OnDelete();
+                onDelete.OnDelete(book);
             }
         });
         holder.imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onEdit.OnEdit();
+                onEdit.OnEdit(book);
             }
         });
     }

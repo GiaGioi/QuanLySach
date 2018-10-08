@@ -1,5 +1,5 @@
 package com.example.dell.qunlsch.listener;
 
-public interface OnEdit {
-    void OnEdit();
+public interface OnEdit<T> {
+    void OnEdit(T t);
 }

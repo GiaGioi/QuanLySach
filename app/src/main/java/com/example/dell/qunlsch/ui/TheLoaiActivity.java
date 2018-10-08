@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TheLoaiActivity extends AppCompatActivity implements OnDelete, OnEdit {
+public class TheLoaiActivity extends AppCompatActivity implements OnDelete<TypeBook>, OnEdit<TypeBook> {
 
     Toolbar toolbarTheLoai;
     FloatingActionButton floatingActionButton;
@@ -157,7 +157,7 @@ public class TheLoaiActivity extends AppCompatActivity implements OnDelete, OnEd
     }
 
     @Override
-    public void OnDelete() {
+    public void OnDelete(TypeBook typeBook) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage("Bạn có muốn xóa thể loại này không?");
@@ -176,7 +176,7 @@ public class TheLoaiActivity extends AppCompatActivity implements OnDelete, OnEd
     }
 
     @Override
-    public void OnEdit() {
+    public void OnEdit(TypeBook typeBook) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View dialogView = inflater.inflate(R.layout.dialog_edittheloai, null);

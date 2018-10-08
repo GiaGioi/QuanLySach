@@ -16,35 +16,25 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <android.support.design.widget.TextInputLayout
+
+    <TextView
+        android:padding="8dp"
+        android:text="Mã Sách"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edMaHoaDon_HoaDonChiTiet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mã Hóa Đơn" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:id="@+id/spBookID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <EditText
-            android:id="@+id/edMaSach_HoaDonChiTiet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mã Sách" />
-    </android.support.design.widget.TextInputLayout>
+        android:layout_height="40dp"/>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/edSoLuong_HoaDonChiTiet"
+            android:id="@+id/edtQuality"
             android:layout_width="match_parent"
+            android:inputType="number"
             android:layout_height="wrap_content"
             android:hint="Số lượng" />
     </android.support.design.widget.TextInputLayout>

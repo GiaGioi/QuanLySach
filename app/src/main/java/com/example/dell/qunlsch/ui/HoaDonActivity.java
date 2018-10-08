@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.dell.qunlsch.Constant;
 import com.example.dell.qunlsch.adapter.AdapterBill;
 
 import com.example.dell.qunlsch.listener.OnAddBillListener;
@@ -41,7 +43,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteListener, OnAddBillListener {
+public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteListener, OnAddBillListener, Constant {
     Toolbar toolbarHoaDon;
 
     RecyclerView rvHoaDon;
@@ -215,7 +217,9 @@ public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteLis
                 Integer mm = month;
                 Integer dd = dayOfMonth;
 
+
                 Calendar calendar = Calendar.getInstance();
+
                 calendar.set(year, month, dayOfMonth);
 
                 //
@@ -258,6 +262,10 @@ public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteLis
 
     @Override
     public void onAddBill(Bill bill) {
+
+        Intent intent = new Intent(this, HoaDonChiTietActivity.class);
+        intent.putExtra(B_ID, bill.id);
+        startActivity(intent);
 
     }
 }

@@ -1,5 +1,5 @@
 package com.example.dell.qunlsch.listener;
 
-public interface OnDelete {
-    void OnDelete();
+public interface OnDelete<T> {
+    void OnDelete(T t);
 }

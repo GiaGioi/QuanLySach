@@ -27,7 +27,7 @@ import com.example.dell.qunlsch.sqlitedao.UserDAO;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListUserAct extends AppCompatActivity implements OnEdit, OnDelete {
+public class ListUserAct extends AppCompatActivity implements OnEdit<User>, OnDelete<User> {
     Toolbar toolbarNguoiDung;
     RecyclerView rvNguoiDung;
     private List<User> userList;
@@ -125,7 +125,7 @@ public class ListUserAct extends AppCompatActivity implements OnEdit, OnDelete {
     }
 
     @Override
-    public void OnDelete() {
+    public void OnDelete(User user) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setMessage("Bạn có muốn xóa người dùng này không?");
@@ -144,7 +144,7 @@ public class ListUserAct extends AppCompatActivity implements OnEdit, OnDelete {
     }
 
     @Override
-    public void OnEdit() {
+    public void OnEdit(User user) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View dialogView = inflater.inflate(R.layout.dialog_editnguoidung, null);

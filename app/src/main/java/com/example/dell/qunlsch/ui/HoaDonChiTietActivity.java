@@ -17,7 +17,7 @@ import android.widget.Button;
 
 import com.example.dell.qunlsch.adapter.HoaDonChiTietAdapter;
 import com.example.dell.qunlsch.listener.OnDelete;
-import com.example.dell.qunlsch.model.HoaDonChitiet;
+import com.example.dell.qunlsch.model.BillDetail;
 import com.example.dell.qunlsch.R;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity implements OnDelete
     Toolbar toolbarHoaDonChiTiet;
     FloatingActionButton floatingActionButton;
     RecyclerView rvHoaDonChiTiet;
-    private List<HoaDonChitiet> hoaDonList;
+    private List<BillDetail> hoaDonList;
     private HoaDonChiTietAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity implements OnDelete
         rvHoaDonChiTiet = findViewById(R.id.RecyclerView_HoaDonChiTiet);
         hoaDonList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            hoaDonList.add(new HoaDonChitiet("Tên: CNTT", "Giá: 20.000 VNĐ","SL: 2","Tổng: 40.000 VNĐ"));
+            hoaDonList.add(new BillDetail("Tên: CNTT", "Giá: 20.000 VNĐ","SL: 2","Tổng: 40.000 VNĐ"));
 
         }
         adapter = new HoaDonChiTietAdapter(hoaDonList, this);

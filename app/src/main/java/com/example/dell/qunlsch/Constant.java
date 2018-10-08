@@ -76,4 +76,26 @@ public interface Constant {
             ")";
 
 
+    /// Bill Detail
+
+    /// CREATE TABLE BillDetail (MaHDCT INT PRIMARY KEY AUTOINCREMENT,
+    /// MaHoaDon NCHAR(7) FOREIGN KEY NOT NULL,
+    // MaSach NCHAR(5) FOREIGN KEY NOT NULL,
+    // SoLuongMua INT NOT NULL
+    //
+    /// )
+
+    String TABLE_BILL_DETAIL = "BillDetail";
+    String DETAIL_ID = "MaHDCT";
+    String DETAIL_BILL_ID = "MaHoaDon";
+    String DETAIL_BOOK_ID = "MaSach";
+    String DETAIL_QUALITY = "SoLuongMua";
+
+    String CREATE_BILL_DETAIL_TABLE = "CREATE TABLE " + TABLE_BILL_DETAIL + "(" +
+            "" + DETAIL_ID + "  INT PRIMARY KEY AUTOINCREMENT," +
+            "" + DETAIL_BILL_ID + " MaHoaDon NCHAR(7) FOREIGN KEY NOT NULL," +
+            "" + DETAIL_BOOK_ID + " NCHAR(5) FOREIGN KEY NOT NULL," +
+            "" + DETAIL_QUALITY + "  INT NOT NULL" +
+            ")";
+
 }

@@ -9,16 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dell.qunlsch.listener.OnDelete;
-import com.example.dell.qunlsch.model.HoaDonChitiet;
+import com.example.dell.qunlsch.model.BillDetail;
 import com.example.dell.qunlsch.R;
 
 import java.util.List;
 
 public class HoaDonChiTietAdapter extends RecyclerView.Adapter<HoaDonChiTietAdapter.ViewHolder>{
-    private List<HoaDonChitiet> hoaDonList;
+    private List<BillDetail> hoaDonList;
     private OnDelete onDelete;
 
-    public HoaDonChiTietAdapter(List<HoaDonChitiet> hoaDonList, OnDelete onDelete) {
+    public HoaDonChiTietAdapter(List<BillDetail> hoaDonList, OnDelete onDelete) {
         this.hoaDonList = hoaDonList;
         this.onDelete = onDelete;
     }
@@ -33,7 +33,7 @@ public class HoaDonChiTietAdapter extends RecyclerView.Adapter<HoaDonChiTietAdap
 
     @Override
     public void onBindViewHolder(@NonNull HoaDonChiTietAdapter.ViewHolder holder, int position) {
-        HoaDonChitiet st = hoaDonList.get(position);
+        BillDetail st = hoaDonList.get(position);
         holder.tvSoluong.setText(st.getSoluong());
         holder.tvTen.setText(st.getTensach());
         holder.tvThanhTien.setText(st.getThanhtien());

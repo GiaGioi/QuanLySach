@@ -92,13 +92,12 @@ public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteLis
         rvHoaDon = findViewById(R.id.lvListBills);
         billList = new ArrayList<>();
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 3; i++) {
             Bill bill = new Bill(i + new Random().nextInt(1000) + "", System.currentTimeMillis());
-            billDAO.insertBill(bill);
+            //billDAO.insertBill(bill);
         }
 
         // dao nguoc vi tri
-
 
         billList = billDAO.getAllBills();
 
@@ -166,9 +165,21 @@ public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteLis
                 }
                 if (datePicker < 0) return;
                 Bill bill = new Bill(billID, datePicker);
-                billDAO.insertBill(bill);
+                long result = billDAO.insertBill(bill);
+                if (result > 0) {
 
-                dialog1.dismiss();
+                    billList.add(bill);
+                    adapterBill.notifyDataSetChanged();
+                    dialog1.dismiss();
+                    Toast.makeText(getApplicationContext(), "Them Bill Thanh Cong!!!", Toast.LENGTH_LONG).show();
+
+                } else {
+
+                    Toast.makeText(getApplicationContext(), "Them Bill KHONG Thanh Cong!!!", Toast.LENGTH_LONG).show();
+
+                }
+
+
             }
         });
         Button huy = dialogView.findViewById(R.id.btnHuy_ThemHoaDon);
@@ -197,7 +208,7 @@ public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteLis
 
         // thiet lap thong tin cho date picker
 
-        DatePickerDialog datePicker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        final DatePickerDialog datePicker = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 Integer yy = year;
@@ -209,6 +220,8 @@ public class HoaDonActivity extends AppCompatActivity implements OnBillDeleteLis
 
                 //
                 long startTime = calendar.getTimeInMillis();
+
+                HoaDonActivity.this.datePicker = calendar.getTimeInMillis();
 
                 tvDate.setText(new Date(startTime).toString());
 

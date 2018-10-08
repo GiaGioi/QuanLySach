@@ -54,10 +54,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity implements OnDelete
         });
         rvHoaDonChiTiet = findViewById(R.id.RecyclerView_HoaDonChiTiet);
         hoaDonList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            hoaDonList.add(new BillDetail("Tên: CNTT", "Giá: 20.000 VNĐ","SL: 2","Tổng: 40.000 VNĐ"));
 
-        }
         adapter = new HoaDonChiTietAdapter(hoaDonList, this);
         rvHoaDonChiTiet.setAdapter(adapter);
 

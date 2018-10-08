@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.dell.qunlsch.adapter.SachBanChayAdapter;
-import com.example.dell.qunlsch.model.Sach;
+import com.example.dell.qunlsch.model.Book;
 import com.example.dell.qunlsch.R;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.List;
 public class SachBanChayActivity extends AppCompatActivity {
     Toolbar toolbarSachBanChay;
     RecyclerView rvSach;
-    private List<Sach> sachList;
+    private List<Book> bookList;
     private SachBanChayAdapter adapter;
     Spinner spinnerThang;
     String thang[] = new String[]{"Tháng 1","Tháng 2","Tháng 3","Tháng 4","Tháng 5","Tháng 6","Tháng 7",
@@ -47,12 +47,11 @@ public class SachBanChayActivity extends AppCompatActivity {
             }
         });
         rvSach = findViewById(R.id.RecyclerView_SachBanChay);
-        sachList = new ArrayList<>();
+        bookList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            sachList.add(new Sach("Tin Học Cơ Sở" , "Số lượng:100000000","Mã sách: THCS"));
 
         }
-        adapter = new SachBanChayAdapter(sachList);
+        adapter = new SachBanChayAdapter(bookList);
         rvSach.setAdapter(adapter);
 
 

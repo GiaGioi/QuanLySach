@@ -85,6 +85,7 @@ public class TheLoaiActivity extends AppCompatActivity implements OnDelete, OnEd
             typeBook.description = " Hello Moto " + i;
             typeBook.position = i + "";
             typeBookList.add(typeBook);
+            typeBookDAO.insertTypeBook(typeBook);
         }
 
         Log.e("SIZE", typeBookList.size() + "");

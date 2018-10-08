@@ -33,8 +33,24 @@ public interface Constant {
     // giaBia FLOAT NOT NULL,
     // soLuong INT NOT NULL
     //)
+    String TABLE_BOOK = "Books";
 
-    String CREATE_BOOK_TABLE = "";
+    String BOOK_ID = "MaSach";
+    String BOOK_TYPE_BOOK_ID = "MaTheLoai";
+    String BOOK_AUTHOR = "TacGia";
+    String BOOK_PRODUCER = "NXB";
+    String BOOK_PRICE = "giaBia";
+    String BOOK_QUALITY = "soLuong";
+
+
+    String CREATE_BOOK_TABLE = "CREATE TABLE " + TABLE_BOOK + "(" +
+            "" + BOOK_ID + " CHAR(5) PRIMARY KEY NOT NULL," +
+            "" + BOOK_TYPE_BOOK_ID + " NCHAR(50)," +
+            "" + BOOK_AUTHOR + " NVARCHAR(50)," +
+            "" + BOOK_PRODUCER + " NVARCHAR(50)," +
+            "" + BOOK_PRICE + " giaBia FLOAT NOT NULL," +
+            "" + BOOK_QUALITY + "  INT NOT NULL" +
+            ")";
 
 
     // TYPE BOOK TABLE
@@ -92,9 +108,9 @@ public interface Constant {
     String DETAIL_QUALITY = "SoLuongMua";
 
     String CREATE_BILL_DETAIL_TABLE = "CREATE TABLE " + TABLE_BILL_DETAIL + "(" +
-            "" + DETAIL_ID + "  INT PRIMARY KEY AUTOINCREMENT," +
-            "" + DETAIL_BILL_ID + " MaHoaDon NCHAR(7) FOREIGN KEY NOT NULL," +
-            "" + DETAIL_BOOK_ID + " NCHAR(5) FOREIGN KEY NOT NULL," +
+            "" + DETAIL_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT," +
+            "" + DETAIL_BILL_ID + " NCHAR(7) NOT NULL ," +
+            "" + DETAIL_BOOK_ID + " NCHAR(5) NOT NULL ," +
             "" + DETAIL_QUALITY + "  INT NOT NULL" +
             ")";
 

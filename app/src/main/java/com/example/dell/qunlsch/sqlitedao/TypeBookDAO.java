@@ -32,7 +32,7 @@ public class TypeBookDAO implements Constant {
         contentValues.put(TB_COLUMN_TYPE_NAME, typeBook.name);
         contentValues.put(TB_COLUMN_POSITION, typeBook.position);
 
-        long result = db.insert(USER_TABLE, null, contentValues);
+        long result = db.insert(TYPE_BOOK_TABLE, null, contentValues);
 
         if (Constant.isDEBUG) Log.e("insertTypeBook", "insertTypeBook ID : " + typeBook.id);
 

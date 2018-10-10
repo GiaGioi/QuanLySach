@@ -37,17 +37,11 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:textStyle="bold"
                     android:textSize="12sp"
-                    android:id="@+id/tvTenSach_HoaDonChiTiet"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:textSize="12sp"
-                    android:id="@+id/tvSoluong_HoaDonChiTiet"
+                    android:id="@+id/tvName"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content" />
@@ -60,14 +54,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:textSize="12sp"
-                    android:id="@+id/tvDonGia_HoaDonChiTiet"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:textSize="12sp"
-                    android:id="@+id/tvThanhTien_HoaDonChiTiet"
+                    android:id="@+id/tvQuality"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content" />

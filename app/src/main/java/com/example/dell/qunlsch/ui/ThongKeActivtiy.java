@@ -29,7 +29,6 @@ public class ThongKeActivtiy extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         statisticsDAO = new StatisticsDAO(databaseHelper);
 
-        statisticsDAO.getStatisticsByMonth(9);
 
 
     }

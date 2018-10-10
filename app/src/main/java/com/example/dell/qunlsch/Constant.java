@@ -5,6 +5,10 @@ public interface Constant {
 
     boolean isDEBUG = true;
 
+    String D_DAY = "\"%Y-%m-%d\"";
+    String M_MONTH = "\"%Y-%m\"";
+    String Y_YEAR = "\"%Y\"";
+
 
     // USER TABLE
 
@@ -48,7 +52,7 @@ public interface Constant {
             "" + BOOK_TYPE_BOOK_ID + " NCHAR(50)," +
             "" + BOOK_AUTHOR + " NVARCHAR(50)," +
             "" + BOOK_PRODUCER + " NVARCHAR(50)," +
-            "" + BOOK_PRICE + " giaBia FLOAT NOT NULL," +
+            "" + BOOK_PRICE + " FLOAT NOT NULL," +
             "" + BOOK_QUALITY + "  INT NOT NULL" +
             ")";
 

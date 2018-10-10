@@ -54,6 +54,8 @@ public class HoaDonChiTietActivity extends AppCompatActivity implements OnDelete
 
         databaseHelper = new DatabaseHelper(this);
 
+        BillDetailDAO billDetailDAO = new BillDetailDAO(databaseHelper);
+
         // lay bill id tu man hinh Bill
         billID = getIntent().getStringExtra(B_ID);
 
@@ -79,6 +81,8 @@ public class HoaDonChiTietActivity extends AppCompatActivity implements OnDelete
         rvHoaDonChiTiet = findViewById(R.id.RecyclerView_HoaDonChiTiet);
         hoaDonList = new ArrayList<>();
 
+        hoaDonList = billDetailDAO.getAllBillDetailByBillID(billID);
+
         adapter = new HoaDonChiTietAdapter(hoaDonList, this);
         rvHoaDonChiTiet.setAdapter(adapter);
 
@@ -94,7 +98,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity implements OnDelete
         final Dialog dialog1 = dialog.show();
 
         final Spinner spBookID;
-        EditText edtQuality;
+        final EditText edtQuality;
 
         spBookID = dialogView.findViewById(R.id.spBookID);
         edtQuality = dialogView.findViewById(R.id.edtQuality);
@@ -111,6 +115,7 @@ public class HoaDonChiTietActivity extends AppCompatActivity implements OnDelete
                 BillDetail billDetail = new BillDetail();
                 billDetail.billID = HoaDonChiTietActivity.this.billID;
                 billDetail.bookID = ((Book) spBookID.getSelectedItem()).id;
+                billDetail.quality = Integer.parseInt(edtQuality.getText().toString().trim());
 
                 BillDetailDAO billDetailDAO = new BillDetailDAO(databaseHelper);
                 long result = billDetailDAO.insertBillDetail(billDetail);

@@ -34,6 +34,9 @@ public class HoaDonChiTietAdapter extends RecyclerView.Adapter<HoaDonChiTietAdap
     @Override
     public void onBindViewHolder(@NonNull HoaDonChiTietAdapter.ViewHolder holder, int position) {
         final BillDetail st = hoaDonList.get(position);
+
+        holder.tvName.setText(st.bookID);
+        holder.tvQuality.setText(st.quality + "");
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,17 +51,15 @@ public class HoaDonChiTietAdapter extends RecyclerView.Adapter<HoaDonChiTietAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imgAvatar, imgDelete;
-        public TextView tvTen, tvSoluong, tvDonGia, tvThanhTien;
-
+        public ImageView imgDelete;
+        public TextView tvName, tvQuality;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imgAvatar = itemView.findViewById(R.id.imgAvatar_HoaDonChiTiet);
-            tvSoluong = itemView.findViewById(R.id.tvSoluong_HoaDonChiTiet);
-            tvTen = itemView.findViewById(R.id.tvTenSach_HoaDonChiTiet);
-            tvDonGia = itemView.findViewById(R.id.tvDonGia_HoaDonChiTiet);
-            tvThanhTien = itemView.findViewById(R.id.tvThanhTien_HoaDonChiTiet);
+
+            tvName = itemView.findViewById(R.id.tvName);
+            tvQuality = itemView.findViewById(R.id.tvQuality);
+
             imgDelete = itemView.findViewById(R.id.imgDeleteHoaDonChiTiet_item);
         }
 

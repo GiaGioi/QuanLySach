@@ -25,9 +25,12 @@ public class DatabaseHelper extends SQLiteOpenHelper implements Constant {
         sqLiteDatabase.execSQL(CREATE_BILL_DETAIL_TABLE);
         sqLiteDatabase.execSQL(CREATE_BOOK_TABLE);
 
+
         if (Constant.isDEBUG) Log.e("CREATE_USER_TABLE", CREATE_USER_TABLE);
         if (Constant.isDEBUG) Log.e("CREATE_TYPE_TABLE", CREATE_TYPE_TABLE);
         if (Constant.isDEBUG) Log.e("CREATE_BILL_TABLE", CREATE_BILL_TABLE);
+
+        if (Constant.isDEBUG) Log.e("CREATE_BILL_TABLE", CREATE_BOOK_TABLE);
 
     }
 

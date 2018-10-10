@@ -20,6 +20,48 @@ public class StatisticsDAO implements Constant {
         this.databaseHelper = databaseHelper;
     }
 
+
+    public void testSUM() {
+
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        String testSUM = "SELECT SUM(tongtien) from (SELECT SUM(Books.giaBia * BillDetail.SoLuongMua) as 'tongtien' " +
+                "" + "from " + TABLE_BILL +
+                "" + " INNER JOIN " + TABLE_BILL_DETAIL + " on " + " Bill.MaHoaDon = BillDetail.MaHoaDon  " +
+                "" + " INNER JOIN " + TABLE_BOOK + " on " + " Books.MaSach = BillDetail.MaSach  " +
+                "" + " WHERE strftime(\"%Y-%m-%d\", Bill.NgayMua / 1000, 'unixepoch') = strftime(\"%Y-%m-%d\",'now') " +
+                "" + " GROUP BY BillDetail.MaSach " +
+                ")";
+
+
+        Cursor cursor = sqLiteDatabase.rawQuery(testSUM, null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                double sum = cursor.getDouble(0);
+                Log.e("SUM", sum + " " + cursor.getCount());
+            }
+        }
+
+    }
+
+
+    public void testDATENow() {
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+        String test = "SELECT * FROM " + TABLE_BILL + " WHERE strftime(\"%Y-%m-%d\", NgayMua / 1000, 'unixepoch' )   = strftime(\"%Y-%m-%d\",'now')";
+        String test2 = "SELECT strftime(\"%Y-%m-%d\", NgayMua / 1000 ,'unixepoch' )  from " + TABLE_BILL;
+        Cursor cursor = sqLiteDatabase.rawQuery(test, null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                String date = cursor.getString(0);
+                Log.e("DATE", date);
+            }
+        }
+
+    }
+
     public long getStatisticsByDayCach1(long day) {
         long result = -1;
         List<Bill> bills = new ArrayList<>();
@@ -55,20 +97,20 @@ public class StatisticsDAO implements Constant {
 
         }
 
-        List<BillDetail> billDetails = new ArrayList<>();
+        List<BillDetail> x = new ArrayList<>();
         for (int i = 0; i < bills.size(); i++) {
             List<BillDetail> billDetails_ =
                     new BillDetailDAO(databaseHelper).getAllBillDetailByBillID(bills.get(i).id);
 
             // lay toan bo danh sach Bill Detail theo Bill ID
-            billDetails.addAll(billDetails_);
+            x.addAll(billDetails_);
 
         }
 
-        for (int i = 0; i < billDetails.size(); i++) {
+        for (int i = 0; i < x.size(); i++) {
 
-            int quality = billDetails.get(i).quality;
-            long price = new BookDAO(databaseHelper).getBookByID(billDetails.get(i).bookID).price;
+            int quality = x.get(i).quality;
+            long price = new BookDAO(databaseHelper).getBookByID(x.get(i).bookID).price;
 
             long sum_ = quality * price;
 
@@ -92,7 +134,7 @@ public class StatisticsDAO implements Constant {
     }
 
 
-    // format month : %Y-%m
+    // format month : %Y-%m  2018-10
 
     public long getStatisticsByMonth(String month) {
         long result = -1;
@@ -100,7 +142,7 @@ public class StatisticsDAO implements Constant {
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
 
-        String SELECT_STATISTICS = "SELECT * FROM " + TABLE_BILL + " WHERE strftime('%Y-%m', " + B_DATE + "/ 1000, 'unixepoch')  = '" + month + "'";
+        String SELECT_STATISTICS = "SELECT * FROM " + TABLE_BILL + " WHERE strftime('%Y-%m', " + B_DATE + ")  = '" + month + "'";
         Cursor cursor = sqLiteDatabase.rawQuery(SELECT_STATISTICS, null);
         if (cursor != null) {
             if (cursor.getCount() > 0) {
@@ -151,5 +193,36 @@ public class StatisticsDAO implements Constant {
 
         return result;
     }
+
+
+    // YY-MM-DD
+
+
+    public double getStatisticsByDate(String dateFormat) {
+
+        double result = -1;
+
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+
+        String QUERY_DAY = "SELECT SUM(tongtien) FROM (" +
+                "" + "SELECT SUM(Books.giaBia * BillDetail.SoluongMua) as 'tongtien'" +
+                "" + " FROM " + TABLE_BILL +
+                "" + " INNER JOIN " + TABLE_BOOK + " ON " + " Books.MaSach = BillDetail.MaSach " +
+                "" + " INNER JOIN " + TABLE_BILL_DETAIL + " ON " + " Bill.MaHoaDon = BillDetail.MaHoaDon " +
+                "" + " WHERE  strftime(" + dateFormat + ", Bill.NgayMua / 1000 , 'unixepoch') = strftime(" + dateFormat + ",'now') " +
+                "" + " GROUP BY BillDetail.MaSach" +
+                ")";
+
+        Log.e("QUERY_DAY", QUERY_DAY);
+
+        Cursor cursor = sqLiteDatabase.rawQuery(QUERY_DAY, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            result = cursor.getDouble(0);
+        }
+        return result;
+    }
+
 
 }

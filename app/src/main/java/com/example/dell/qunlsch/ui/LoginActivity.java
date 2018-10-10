@@ -3,6 +3,7 @@ package com.example.dell.qunlsch.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -10,12 +11,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.dell.qunlsch.Constant;
 import com.example.dell.qunlsch.R;
 import com.example.dell.qunlsch.model.User;
 import com.example.dell.qunlsch.sqlite.DatabaseHelper;
+import com.example.dell.qunlsch.sqlitedao.StatisticsDAO;
 import com.example.dell.qunlsch.sqlitedao.UserDAO;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements Constant {
     private ImageView imgLogo;
     private EditText edUserName;
     private EditText edPassWord;
@@ -33,12 +36,21 @@ public class LoginActivity extends AppCompatActivity {
 
         UserDAO userDAO = new UserDAO(databaseHelper);
 
+
+        StatisticsDAO statisticsDAO = new StatisticsDAO(databaseHelper);
+        double day = statisticsDAO.getStatisticsByDate(D_DAY);
+        double month = statisticsDAO.getStatisticsByDate(M_MONTH);
+        double year = statisticsDAO.getStatisticsByDate(Y_YEAR);
+
+
+        Log.e("RESULT", day + " : " + month + " : " + year);
+
         User user = new User();
         user.setUsername("admin");
         user.setName("Huy Nguyen");
         user.setPassword("admin123");
         user.setSdt("0919030190");
-        userDAO.insertUser(user);
+        //userDAO.insertUser(user);
 
         initViews();
 
